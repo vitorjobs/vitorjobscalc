@@ -18,4 +18,4 @@ server.use(express.urlencoded({ extended: true }))
 // routes
 server.use(routes)
 
-server.listen(3000 || process.env.PORT, () => console.log('Runing Online'))
+server.listen(process.env.PORT || 3000, () => console.log('Runing Online'))
