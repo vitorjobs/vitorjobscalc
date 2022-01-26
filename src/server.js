@@ -3,14 +3,20 @@ const routes = require('./routes')
 const path = require('path')
 
 const app = express()
-app.use(express.json())
+// routes
+app.use(routes)
+// app.use(express.json())
 
 // ARQUIVO DE CONFIGURAÇÃO DO SWAGGER
 const swaggerUI  = require('swagger-ui-express')
-const swaggerDocument = ('./swagger.json')
+// const swaggerDocument = './swagger.json'
+const swaggerDocument = require("./swagger.json")
 
 // ROTA PARA A DOCUMENTAÇÃO 
-app.use('/docs', swaggerUI.serve, swaggerUI.setup(swaggerDocument)) 
+app.use('/docs', 
+    swaggerUI.serve, 
+    swaggerUI.setup(swaggerDocument)
+  ) 
 
 // ROTA DO TERMOS
 app.get('/terms', (request, response) =>{
@@ -19,11 +25,11 @@ app.get('/terms', (request, response) =>{
   })
 })
 
-// routes
-app.use(routes)
-
-// versionamento da documentação
-app.use('/v1', routes)
+app.get('/', (request, response) =>{
+  return response.json({
+    message: "Projeto - Documentação com Swagger"
+  })
+})
 
 // usando template engine
 app.set('view engine', 'ejs')
@@ -37,5 +43,7 @@ app.use(express.static('public'))
 // usar o req.body
 app.use(express.urlencoded({ extended: true }))
 
+// versionamento da documentação
+app.use('/v1', routes)
 
 app.listen(process.env.PORT || 3000, () => console.log('Runing Online'))

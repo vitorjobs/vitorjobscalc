@@ -3,8 +3,8 @@
 
   "info": {
   "version": "1.0.0",
-  "title": "Documentação de API - Projeto CRUD",
-  "description": "Mapeamento de End-Points",
+  "title": "EndPoints - Vítor Jobs Calc",
+  "description": "Mapeamento de End-Points do Projeto Vitor Jobs Calc",
   "terms": "http://localhost:3000/terms",
 
   "contact": {
@@ -15,7 +15,7 @@
   "servers" : [
     {
       "url": "http://localhost:3000/v1",
-      "description":"API de Estudos"
+      "description":"Vítor Jobs Calc"
     }
   ] 
 }
