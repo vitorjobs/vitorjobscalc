@@ -1,21 +1,41 @@
 const express = require('express')
-const server = express()
 const routes = require('./routes')
 const path = require('path')
 
-// usando template engine
-server.set('view engine', 'ejs')
+const app = express()
+app.use(express.json())
 
-// Mudar a localização da pasta views
-server.set('views', path.join(__dirname, 'views'))
+// ARQUIVO DE CONFIGURAÇÃO DO SWAGGER
+const swaggerUI  = require('swagger-ui-express')
+const swaggerDocument = ('./swagger.json')
 
-//habilitar arquivos statics
-server.use(express.static('public'))
+// ROTA PARA A DOCUMENTAÇÃO 
+app.use('/docs', swaggerUI.serve, swaggerUI.setup(swaggerDocument)) 
 
-// usar o req.body
-server.use(express.urlencoded({ extended: true }))
+// ROTA DO TERMOS
+app.get('/terms', (request, response) =>{
+  return response.json({
+    message: "Termos de Serviço"
+  })
+})
 
 // routes
-server.use(routes)
+app.use(routes)
 
-server.listen(process.env.PORT || 3000, () => console.log('Runing Online'))
+// versionamento da documentação
+app.use('/v1', routes)
+
+// usando template engine
+app.set('view engine', 'ejs')
+
+// Mudar a localização da pasta views
+app.set('views', path.join(__dirname, 'views'))
+
+//habilitar arquivos statics
+app.use(express.static('public'))
+
+// usar o req.body
+app.use(express.urlencoded({ extended: true }))
+
+
+app.listen(process.env.PORT || 3000, () => console.log('Runing Online'))

@@ -1,0 +1,21 @@
+{
+  "openapi": "3.0.0",
+
+  "info": {
+  "version": "1.0.0",
+  "title": "Documentação de API - Projeto CRUD",
+  "description": "Mapeamento de End-Points",
+  "terms": "http://localhost:3000/terms",
+
+  "contact": {
+    "email" :"vittorbassdev@gmail.com"
+    }
+  },
+
+  "servers" : [
+    {
+      "url": "http://localhost:3000/v1",
+      "description":"API de Estudos"
+    }
+  ] 
+}
