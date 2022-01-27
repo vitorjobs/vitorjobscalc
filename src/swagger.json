@@ -5,7 +5,7 @@
   "version": "1.0.0",
   "title": "EndPoints - Vítor Jobs Calc",
   "description": "Mapeamento de End-Points do Projeto Vitor Jobs Calc",
-  "terms": "http://localhost:3000/terms",
+  "terms": "https://vitorjobscalc.herokuapp.com/terms",
 
   "contact": {
     "email" :"vittorbassdev@gmail.com"
@@ -14,7 +14,7 @@
 
   "servers" : [
     {
-      "url": "http://localhost:3000/v1",
+      "url": "https://vitorjobscalc.herokuapp.com/v1",
       "description":"Vítor Jobs Calc"
     }
   ] 
